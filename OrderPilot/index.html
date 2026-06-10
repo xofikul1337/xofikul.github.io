@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrderPilot Pro - Download the App</title>
+<meta name="description" content="OrderPilot Pro - WooCommerce Order Notification Manager for Android. Download the APK and get real-time order alerts on your phone.">
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --bg: #0b1120;
+    --surface: #1e293b;
+    --surface-2: #16213a;
+    --border: #2d3b54;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --success: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Navbar ───────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(11, 17, 32, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .nav-brand img {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── Hero ─────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 70px;
+    overflow: hidden;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    z-index: 0;
+    animation: drift 16s ease-in-out infinite alternate;
+  }
+  .orb-1 {
+    width: 320px; height: 320px;
+    background: var(--primary);
+    top: -120px; left: -80px;
+  }
+  .orb-2 {
+    width: 280px; height: 280px;
+    background: #06b6d4;
+    bottom: -100px; right: -60px;
+    animation-delay: -6s;
+  }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.15); }
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .app-icon {
+    width: 104px;
+    height: 104px;
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(79, 70, 229, 0.45);
+    animation: float 3.6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  .hero h1 {
+    margin-top: 24px;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    background: linear-gradient(90deg, #ffffff, var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .tagline {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15.5px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Download button */
+  .download-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, var(--primary) 0%, #4338ca 100%);
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    animation: pulse-glow 2.6s ease-in-out infinite;
+  }
+  .download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(79, 70, 229, 0.55);
+  }
+  .download-btn:active { transform: translateY(0); }
+  .download-btn svg { width: 20px; height: 20px; }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4), 0 0 0 0 rgba(79, 70, 229, 0.45); }
+    50%      { box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4), 0 0 0 12px rgba(79, 70, 229, 0); }
+  }
+
+  .download-note {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* Stat chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+  .chip svg { width: 14px; height: 14px; color: var(--primary-light); }
+
+  /* ── Sections ─────────────────────────────────────────── */
+  section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14.5px;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+
+  /* Reveal-on-scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Feature grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+  }
+  .feature-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(79, 70, 229, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .feature-icon svg {
+    width: 22px;
+    height: 22px;
+    color: var(--primary-light);
+  }
+  .feature-card h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .feature-card p {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  /* Install steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    counter-reset: step;
+  }
+  .step {
+    position: relative;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 20px 20px;
+    text-align: center;
+  }
+  .step-number {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), #4338ca);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.5);
+  }
+  .step h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 14px 0 6px;
+  }
+  .step p {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* CTA bottom */
+  .cta {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(79,70,229,0.18), rgba(6,182,212,0.12));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 24px;
+  }
+  .cta h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .cta p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 20px 40px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+  footer .footer-links {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+  }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer a:hover { color: var(--primary-light); }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 28px; }
+    .hero .tagline { font-size: 14px; }
+    .download-btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <img src="icon.png" alt="OrderPilot Pro">
+    <span>OrderPilot Pro</span>
+  </div>
+  <div class="nav-links">
+    <a href="support.html">Support</a>
+    <a href="privacy-policy.html">Privacy</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="hero-content">
+    <img class="app-icon" src="icon.png" alt="OrderPilot Pro app icon">
+    <h1>OrderPilot Pro</h1>
+    <p class="tagline">
+      Get instant WooCommerce order notifications and manage your store
+      orders right from your phone &mdash; built for store owners and staff
+      on the go.
+    </p>
+
+    <!-- Replace href="#" with your APK download link (e.g. a GitHub Release asset URL) -->
+    <a class="download-btn" href="#" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download APK
+    </a>
+    <p class="download-note">Direct download &middot; Allow "Install unknown apps" if prompted</p>
+
+    <div class="chips">
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        v1.3.3
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M7 12h10"/></svg>
+        ~37 MB
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        Android 5.0+
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        32-bit &amp; 64-bit
+      </span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2 class="section-title reveal">Everything you need, in one app</h2>
+  <p class="section-subtitle reveal">
+    OrderPilot Pro keeps you connected to your WooCommerce store with
+    real-time alerts and on-the-go order management.
+  </p>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      </div>
+      <h3>Real-Time Order Alerts</h3>
+      <p>Get instant push notifications the moment a new order comes in &mdash; never miss a sale.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-4"/><path d="M9 12h6M9 16h6"/></svg>
+      </div>
+      <h3>Manage Orders On the Go</h3>
+      <p>View, search, update status, claim, and add notes to orders right from your phone.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Secure by Design</h3>
+      <p>HTTPS-only connections with built-in VPN/proxy detection to keep your store data safe.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg>
+      </div>
+      <h3>Works on Any Android</h3>
+      <p>Single APK supports both 32-bit and 64-bit devices &mdash; old or new phones, all covered.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      </div>
+      <h3>Fast &amp; Lightweight</h3>
+      <p>Optimized build that loads instantly and stays light on storage and battery.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Multi-Staff Support</h3>
+      <p>Share one Store Code with your whole team &mdash; everyone stays in sync on every order.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title reveal">How to install</h2>
+  <p class="section-subtitle reveal">
+    OrderPilot Pro is installed directly from this page (not the Play Store yet).
+    It only takes a minute.
+  </p>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-number">1</div>
+      <h3>Download the APK</h3>
+      <p>Tap the Download button above to save the file to your phone.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-number">2</div>
+      <h3>Open the file</h3>
+      <p>Open the downloaded APK from your notifications or Downloads folder.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-number">3</div>
+      <h3>Allow install</h3>
+      <p>If asked, allow "Install unknown apps" for your browser or file manager.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-number">4</div>
+      <h3>Open &amp; connect</h3>
+      <p>Launch OrderPilot Pro and connect it to your store with your Store Code.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta reveal">
+    <h2>Ready to get started?</h2>
+    <p>Download OrderPilot Pro now and start managing your orders smarter.</p>
+    <!-- Replace href="#" with your APK download link (e.g. a GitHub Release asset URL) -->
+    <a class="download-btn" href="#" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download APK
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="support.html">Support</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+  &copy; 2026 OrderPilot Pro. All rights reserved.
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
