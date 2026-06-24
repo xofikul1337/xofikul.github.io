@@ -143,91 +143,52 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
 
-/*=============== SCROLL REVEAL ANIMATION ===============*/
-const sr = ScrollReveal({
-  origin: "top",
-  distance: "60px",
-  duration: 2500,
-  delay: 400,
-  reset: true,
+/*=============== SCROLL REVEAL ANIMATION (native IntersectionObserver) ===============*/
+// Each entry: [selector, modifier class or null, stagger-group flag]
+const revealGroups = [
+  [".nav__menu", "reveal--nav"],
+  [".section__title, .section__subtitle", "reveal--top"],
+  [".home__data", "reveal--top"],
+  [".home__handle", null],
+  [".home__scroll", null],
+  [".about__img", "reveal--left"],
+  [".about__info, .about__description, .about__button-contact", "reveal--right"],
+  [".skills__content", null, true],
+  [".services__card", null, true],
+  [".work__filters", "reveal--top"],
+  [".testimonial__container", null],
+  [".contact__card", "reveal--left", true],
+  [".contact__form", "reveal--right"],
+  [".footer__container", null],
+];
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+function prepareReveal(el, modifierClass, staggerIndex) {
+  el.classList.add("reveal");
+  if (modifierClass) el.classList.add(modifierClass);
+  if (staggerIndex) el.style.transitionDelay = `${staggerIndex * 0.12}s`;
+  revealObserver.observe(el);
+}
+
+revealGroups.forEach(([selector, modifierClass, stagger]) => {
+  document.querySelectorAll(selector).forEach((el, i) => {
+    prepareReveal(el, modifierClass, stagger ? i : 0);
+  });
 });
 
-sr.reveal(`.nav__menu`, {
-  delay: 100,
-  scale: 0.1,
-  origin: "bottom",
-  distance: "300px",
-});
-
-sr.reveal(`.home__data`);
-sr.reveal(`.home__handle`, {
-  delay: 100,
-});
-
-sr.reveal(`.home__social, .home__scroll`, {
-  delay: 100,
-  origin: "bottom",
-});
-
-sr.reveal(`.about__img`, {
-  delay: 100,
-  origin: "left",
-  scale: 0.9,
-  distance: "30px",
-});
-
-sr.reveal(`.about__data, .about__description, .about__button-contact`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "right",
-  distance: "30px",
-});
-
-sr.reveal(`.skills__content`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
-
-sr.reveal(`.services__title, services__button`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "top",
-  distance: "30px",
-});
-
-sr.reveal(`.work__card`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
-
-sr.reveal(`.testimonial__container`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
-
-sr.reveal(`.contact__info, .contact__title-info`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "left",
-  distance: "30px",
-});
-
-sr.reveal(`.contact__form, .contact__title-form`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "right",
-  distance: "30px",
-});
-
-sr.reveal(`.footer, footer__container`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
+// .work__card elements are fetched asynchronously (see the inline script below);
+// expose a helper so newly created cards also get the same reveal treatment.
+window.revealNewWorkCard = function (el, index) {
+  prepareReveal(el, null, index);
+};
