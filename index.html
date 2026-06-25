@@ -112,7 +112,10 @@
                         </div>
                     </div>
                     <p class="about__description">
-                        I'm a Web & App Developer with my main focus on building custom websites and applications, backed by extensive experience as a WordPress Developer, Digital Marketer, and Social Media Bot Specialist. My core strength is custom web development with WordPress, Elementor, and plugin development, along with Android app development and API integration, complemented by SEO-friendly content, AI automation with tools like n8n and Botpress, bots for Telegram, WhatsApp, and Messenger, high-ROI Facebook & Google Ads campaigns, lead generation systems, and optimized sales funnels — all built to drive measurable business growth.
+                        I'm a Web & App Developer with my main focus on building custom websites and applications. My core strength is custom web development with WordPress, Elementor, and plugin development, along with Android app development and API integration.
+                    </p>
+                    <p class="about__description">
+                        Backed by experience as a Digital Marketer and Social Media Bot Specialist, I also build bots for Telegram, WhatsApp, and Messenger, set up AI automation with tools like n8n and Botpress, write SEO-friendly content, and run high-ROI Facebook & Google Ads campaigns with lead generation and sales funnels — all to drive measurable business growth.
                     </p>
                     <a href="#contact" class="button about__button-contact">Contact Me</a>
                 </div>
@@ -769,7 +772,7 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = "https://crypto-paymentpy.vercel.app/api/sheet?url=https://docs.google.com/spreadsheets/d/19rePeXSkMvyPIqzdTllofK3Jk82Bs92X_qqQM2v2_fQ/edit?usp=sharing&sheet=Sheet1";
+    const API_URL = "https://opensheet.elk.sh/19rePeXSkMvyPIqzdTllofK3Jk82Bs92X_qqQM2v2_fQ/Sheet1";
     const container = document.querySelector(".work__container");
     const filters = document.querySelectorAll(".work__item");
     const LOAD_BATCH = 4;
@@ -792,6 +795,8 @@
         if (cat === "wp") return "wordpress";
         if (cat === "bot") return "telegram";
         if (cat === "web") return "web";
+        if (cat === "ads") return "ads";
+        if (cat === "funnel") return "funnel";
         return "";
     }
     function renderProjects() {
@@ -841,10 +846,10 @@
     // Transform the API response to match expected format
     function transformData(apiData) {
         return apiData.map(item => {
-            // Extract project_name from the URL key
-            const urlKey = Object.keys(item).find(key => key.includes('crypto-paymentpy'));
+            // The sheet's first column header is messy text, so read it by position
+            const nameKey = Object.keys(item)[0];
             return {
-                project_name: item[urlKey],
+                project_name: item[nameKey],
                 thumbnail_url: item.thumbnail_url,
                 visitUrl: item.visitUrl,
                 category: item.category

@@ -540,6 +540,11 @@ body.light-theme {
 }
 
 .about__description {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about__description:last-of-type {
   margin-bottom: 2rem;
 }
 
