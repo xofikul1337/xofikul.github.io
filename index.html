@@ -615,6 +615,10 @@
         <span class="work__item" data-filter=".funnel">Funnel</span>
     </div>
     <div class="work__container container grid"></div>
+    <div class="image-lightbox" id="image-lightbox">
+        <i class="bx bx-x image-lightbox__close" id="image-lightbox-close"></i>
+        <img src="" alt="Full view" class="image-lightbox__img" id="image-lightbox-img">
+    </div>
 </section>
         <section class="testimonial section">
             <span class="section__subtitle">My clients say</span>
@@ -776,18 +780,39 @@
     const container = document.querySelector(".work__container");
     const filters = document.querySelectorAll(".work__item");
     const LOAD_BATCH = 4;
+
+    // Full-view lightbox for cards without a visitUrl (e.g. ad screenshots)
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImg = document.getElementById("image-lightbox-img");
+    const lightboxClose = document.getElementById("image-lightbox-close");
+    container.addEventListener("click", (e) => {
+        const viewBtn = e.target.closest(".work__button--view");
+        if (!viewBtn) return;
+        lightboxImg.src = viewBtn.dataset.img;
+        lightbox.classList.add("active-modal");
+    });
+    lightboxClose.addEventListener("click", () => lightbox.classList.remove("active-modal"));
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("active-modal");
+    });
     let allProjects = [];
     let currentFilter = "all";
     let shownCount = 0;
     function createCard(project) {
         const card = document.createElement("div");
         card.className = `work__card mix ${getCategoryClass(project.category)}`;
+        const hasLink = project.visitUrl && project.visitUrl.trim() !== "";
+        const buttonHtml = hasLink
+            ? `<a href="${project.visitUrl}" target="_blank" class="work__button">
+                Demo <i class='bx bx-right-arrow work__icon'></i>
+            </a>`
+            : `<button type="button" class="work__button work__button--view" data-img="${project.thumbnail_url}">
+                Full View <i class='bx bx-expand work__icon'></i>
+            </button>`;
         card.innerHTML = `
             <img src="${project.thumbnail_url}" alt="${project.project_name}" class="work__img">
             <h3 class="work__title">${project.project_name}</h3>
-            <a href="${project.visitUrl}" target="_blank" class="work__button">
-                Demo <i class='bx bx-right-arrow work__icon'></i>
-            </a>
+            ${buttonHtml}
         `;
         return card;
     }

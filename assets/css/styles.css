@@ -794,6 +794,11 @@ body.light-theme {
   align-items: center;
   column-gap: 0.25rem;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-weight: var(--font-medium);
 }
 
 .work__button:hover .work__icon {
@@ -809,6 +814,42 @@ body.light-theme {
 .active-work {
   background: var(--gradient);
   color: #fff;
+}
+
+/* Full-view lightbox for cards without a visitUrl */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: hsla(var(--second-hue), 50%, 4%, 0.9);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  z-index: var(--z-modal);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.image-lightbox.active-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.image-lightbox__img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px hsla(var(--second-hue), 60%, 2%, 0.6);
+}
+
+.image-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
 }
 
 /*=============== TESTIMONIAL ===============*/
